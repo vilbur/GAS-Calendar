@@ -4,10 +4,10 @@ function createTestEvent()
 {
   var spreadsheet = SpreadsheetApp.getActiveSheet();
 
-//  var calendarId = spreadsheet.getRange('E4').getValue();
-  var calendarId = "5lpv6sd94mcagot58k6o70on2g@group.calendar.google.com";
+//  var calendar_id = spreadsheet.getRange('E4').getValue();
+  var calendar_id = "5lpv6sd94mcagot58k6o70on2g@group.calendar.google.com";
 
-  var eventCal = CalendarApp.getCalendarById(calendarId);
+  var eventCal = CalendarApp.getCalendarById(calendar_id);
 
       var event = {
 //          'location': location,
@@ -23,6 +23,8 @@ function createTestEvent()
 //  eventCal.createEvent("summary", startTime, endTime, event)
 
     eventCal.createAllDayEvent("createTestEvent", new Date() )
+    
+    
 }
 
 
@@ -33,8 +35,8 @@ function deleteTestEvent()
 {
 
 
-var calendarId = "5lpv6sd94mcagot58k6o70on2g@group.calendar.google.com";
-var cal = CalendarApp.getCalendarById(calendarId);
+var calendar_id = "5lpv6sd94mcagot58k6o70on2g@group.calendar.google.com";
+var cal = CalendarApp.getCalendarById(calendar_id);
 
 
   var events = cal.getEventsForDay(new Date());
@@ -63,13 +65,13 @@ Logger.log( events.length  );
       events[i].deleteEvent()
       
       
-//     var baseUrl = "https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events/{eventId}?sendNotifications=true";
+//     var baseUrl = "https://www.googleapis.com/calendar/v3/calendars/{calendar_id}/events/{eventId}?sendNotifications=true";
 //
 //      var   eventId = events[i].getId();
 //      
 //     eventId = eventId.substr(0, eventId.indexOf("@"));
 //      Logger.log( eventId  );
-//     var url = baseUrl.replace("{calendarId}", calendarId).replace("{eventId}", eventId);
+//     var url = baseUrl.replace("{calendar_id}", calendar_id).replace("{eventId}", eventId);
 //
 //      var options = {
 //    
@@ -93,7 +95,7 @@ Logger.log( events.length  );
 //  
 //      for(var d=0; guestList!=null && d<guestList.length; d++)
 //      {
-//          var details=[[calendarId,events[i].getTitle(), events[i].getDescription(), events[i].getLocation(), events[i].getStartTime(), events[i].getEndTime(), myformula_placeholder, ('' + events[i].getVisibility()), events[i].getDateCreated(), events[i].getLastUpdated(), events[i].getMyStatus(), events[i].getCreators(), events[i].isAllDayEvent(), events[i].isRecurringEvent(), events[i].getId(), guestList[d].getEmail(), guestList[d].getGuestStatus(), guestList[d].getName()]];
+//          var details=[[calendar_id,events[i].getTitle(), events[i].getDescription(), events[i].getLocation(), events[i].getStartTime(), events[i].getEndTime(), myformula_placeholder, ('' + events[i].getVisibility()), events[i].getDateCreated(), events[i].getLastUpdated(), events[i].getMyStatus(), events[i].getCreators(), events[i].isAllDayEvent(), events[i].isRecurringEvent(), events[i].getId(), guestList[d].getEmail(), guestList[d].getGuestStatus(), guestList[d].getName()]];
 //  
 //          Logger.log(details);
 //  
