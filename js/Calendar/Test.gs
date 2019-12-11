@@ -1,4 +1,4 @@
-/**CONSTRUCT
+/** CalendarTest
 */
 
 function CalendarTest()
@@ -15,5 +15,27 @@ function CalendarTest()
 
       Logger.log( _Calendar.getId() );
 
+}
+
+
+
+/** syncCalendarToSheet
+*/
+
+function syncCalendarToSheet()
+{  
+    var _Calendar = new Calendar();
+    var _CalendarSpread = new CalendarSpread();
+
+    if( ! _Calendar.exists() )
+      return;
+//      Logger.log( "Create" );
+    var events = _Calendar.getEvents();
+//      Logger.log( _Calendar.getId() );
+    
+    
+    _CalendarSpread.insertEvents( events );
+    
+    
 }
 

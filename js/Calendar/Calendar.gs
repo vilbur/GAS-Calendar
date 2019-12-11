@@ -45,6 +45,26 @@ var Calendar = (function()
         {
             return calendar.getId();
         }
+        /**
+        */
+        this.getEvents = function()
+        {
+              var events = calendar.getEventsForDay(new Date());
+
+              var sheet = SpreadsheetApp.getActiveSheet();
+            Logger.log( events.length  );
+            
+//            for (var i=0;i<events.length;i++) 
+//            {
+//                Logger.log(  events[i].getTitle()  );
+//                
+////                events[i].deleteEvent()
+//                
+//            }
+          
+          return events;
+        }
+        
         
         /**
         */
