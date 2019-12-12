@@ -24,10 +24,15 @@ function seedTestEvents()
    deleteTestEvents();
  
   var events_count = 3;
+  var duration = 1
+  var spacing = 1
+
+ 
+ 
+  var events_count = 3;
 
   var start_time = new Date()
   var end_time = new Date()
-  var duration = 2
   
   start_time.setHours( 0 ,0,0)
 
@@ -38,7 +43,7 @@ function seedTestEvents()
      
       createTestEvent( "Summary "+i,start_time, end_time)
          
-      start_time.setHours( end_time.getHours() +1 ,0,0)
+      start_time.setHours( end_time.getHours() +spacing ,0,0)
 
   }
 }

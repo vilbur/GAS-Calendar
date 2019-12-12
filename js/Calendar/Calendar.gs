@@ -3,10 +3,6 @@
  */
 var Calendar = (function()
 {
-	/*
-		CONSTRUCT
-	*/
-
 	function Calendar()
 	{
         var spread_name = SpreadsheetApp.getActiveSpreadsheet().getName();
@@ -49,20 +45,21 @@ var Calendar = (function()
         */
         this.getEvents = function()
         {
-              var events = calendar.getEventsForDay(new Date());
+            var sheet = SpreadsheetApp.getActiveSheet();
 
-              var sheet = SpreadsheetApp.getActiveSheet();
-            Logger.log( events.length  );
+            var today = new Date();
+            var yesterday_midnight =  new Date();
+  
+            today.setHours(23, 59, 59);
+  
+            yesterday_midnight.setDate( yesterday_midnight.getDate() -1 )
+            yesterday_midnight.setHours(23, 59, 59)
             
-//            for (var i=0;i<events.length;i++) 
-//            {
-//                Logger.log(  events[i].getTitle()  );
-//                
-////                events[i].deleteEvent()
-//                
-//            }
-          
-          return events;
+            
+            Logger.log( today );
+            Logger.log( yesterday_midnight );
+  
+            return calendar.getEvents( yesterday_midnight, today  );
         }
         
         
@@ -70,12 +67,9 @@ var Calendar = (function()
         */
         var setCalendar = function()
         {
-          var calendars = CalendarApp.getCalendarsByName(spread_name)
+            var calendars = CalendarApp.getCalendarsByName(spread_name)
       
-            Logger.log( calendars.length ) 
             calendar = (calendars.length>0) ? calendars.shift() : null;
-            
-            
         };
         
         
