@@ -19,6 +19,7 @@ function CalendarTest()
 
 
 
+
 /** syncCalendarToSheet
 */
 
@@ -35,7 +36,9 @@ function syncCalendarToSheet()
     
     
     _CalendarSpread.insertEvents( events );
+//    Logger.log( "-----" );
     
+//    Logger.log( 3 == 3.0 );
     
 }
 
