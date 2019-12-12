@@ -47,17 +47,20 @@ var Calendar = (function()
         {
             var sheet = SpreadsheetApp.getActiveSheet();
 
-            var today = new Date();
-            var yesterday_midnight =  new Date();
-  
-            today.setHours(23, 59, 59);
-  
-            yesterday_midnight.setDate( yesterday_midnight.getDate() -1 )
-            yesterday_midnight.setHours(23, 59, 59)
+
+            var today = (function(today)
+            {
+              today.setHours(23, 59, 59);
+              return today;
+            })(new Date());
             
+            var yesterday_midnight = (function(yesterday_midnight)
+            {
+              yesterday_midnight.setDate( yesterday_midnight.getDate() -1 )
+              yesterday_midnight.setHours(23, 59, 59)
             
-            Logger.log( today );
-            Logger.log( yesterday_midnight );
+              return yesterday_midnight;
+            })( new Date());
   
             return calendar.getEvents( yesterday_midnight, today  );
         }
