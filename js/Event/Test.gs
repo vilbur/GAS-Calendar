@@ -2,7 +2,7 @@
 
 /**
 */
-function createEventTest(title, start_time, end_time)
+function createTestEvent(title, start_time, end_time)
 {
 //    var _Calendar = new Calendar();
 
@@ -19,9 +19,9 @@ function createEventTest(title, start_time, end_time)
 
 /**
 */
-function createEventTestSeed()
+function seedTestEvents()
 {
-   deleteEventTest();
+   deleteTestEvents();
  
   var events_count = 3;
 
@@ -36,16 +36,16 @@ function createEventTestSeed()
       
       end_time.setHours( start_time.getHours()+duration ,0,0)
      
-      createEventTest( "Summary "+i,start_time, end_time)
+      createTestEvent( "Summary "+i,start_time, end_time)
          
-      start_time.setHours( end_time.getHours() ,0,0)
+      start_time.setHours( end_time.getHours() +1 ,0,0)
 
   }
 }
 
 /**
 */
-function deleteEventTest()
+function deleteTestEvents()
 {
 
   
