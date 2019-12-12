@@ -6,7 +6,10 @@ var CalendarSpread = (function()
 	function CalendarSpread()
 	{
         var spread_name = SpreadsheetApp.getActiveSpreadsheet().getName();
-       
+        var sheet = SpreadsheetApp.getActiveSheet();
+        var resolution = 4;
+        var hours = resolution*24;
+        
         /** Create array filled with integers
         * @param		integer	max	max count of items
         * @example	 arrayIntegers(5) // return [1, 2, 3, 4, 5]
@@ -18,6 +21,18 @@ var CalendarSpread = (function()
         }
         /**
         */
+        this.mergeVertically = function( column, row, height )
+        {
+            var range = sheet.getRange( column, row, row+height-1, column );
+            
+            var mergedRanges = range.getMergedRanges();
+            for (var i = 0; i < mergedRanges.length; i++)
+                mergedRanges[i].breakApart();
+
+            range.mergeVertically(  );
+        }
+        /**
+        */
         this.test = function()
         {
 
@@ -26,10 +41,6 @@ var CalendarSpread = (function()
         */
         this.insertEvents = function(events)
         {
-            var resolution = 4;
-            var hours = resolution*24;
-  
-            var sheet = SpreadsheetApp.getActiveSheet();
             var events_insert = arrayIntegers(hours).map(function(x,i){return [""];});
             var range = sheet.getRange(1,1,hours,1);
             
@@ -39,15 +50,12 @@ var CalendarSpread = (function()
             */
             function insertEventByStartTime(event)
             {
-            
                events_insert[event.getStartTime().getHours() * resolution] = [ event.getTitle() ];
             }
             
             for (var i=0;i<events.length;i++) 
               insertEventByStartTime( events[i] );
             
-//            Logger.log( events_insert );
-
             range.setValues( events_insert );
         }
 

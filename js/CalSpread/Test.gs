@@ -1,16 +1,9 @@
-///**CONSTRUCT
-//*/
-//
-//function syncCalendarToSheet()
-//{  
-//    var _Calendar = new Calendar();
-//
-//    if( ! _Calendar.exists() )
-//      return;
-////      Logger.log( "Create" );
-//    var events = _Calendar.getEvents();
-////      Logger.log( _Calendar.getId() );
-//    
-//    Logger.log( events );
-//    
-//}
+/** Merge emty cells behing each event
+*/
+function mergeCells()
+{  
+
+    var _CalendarSpread = new CalendarSpread();
+
+    _CalendarSpread.mergeVertically(1,1,3);
+}
