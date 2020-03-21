@@ -20,4 +20,4 @@ var CalendarSpreadSyncer = (function()
 	}
 
 	return CalendarSpreadSyncer;
-})();
+})();		

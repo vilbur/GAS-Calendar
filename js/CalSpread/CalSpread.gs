@@ -5,10 +5,11 @@ var CalendarSpread = (function()
 {
 	function CalendarSpread()
 	{
-        var spread_name = SpreadsheetApp.getActiveSpreadsheet().getName();
-        var sheet = SpreadsheetApp.getActiveSheet();
-        var resolution = 4;
-        var hours = resolution*24;
+
+        var spread_name	= SpreadsheetApp.getActiveSpreadsheet().getName();
+        var sheet	= SpreadsheetApp.getActiveSheet();
+        var resolution	= 4;
+        var hours	= resolution*24;
         
         /** Create array filled with integers
         * @param		integer	max	max count of items
@@ -17,8 +18,8 @@ var CalendarSpread = (function()
         */
         var arrayIntegers = function(max)
         {
-          return max? arrayIntegers(max-1).concat(max):[]
-        }
+          return max? arrayIntegers(max-1).concat(max):[];
+        };
         /**
         */
         this.mergeVertically = function( column, row, height )
@@ -30,19 +31,19 @@ var CalendarSpread = (function()
                 mergedRanges[i].breakApart();
 
             range.mergeVertically(  );
-        }
+        };
         /**
         */
         this.test = function()
         {
 
-        }
+        };
         /**
         */
         this.insertEvents = function(events)
         {
-            var events_insert = arrayIntegers(hours).map(function(x,i){return [""];});
-            var range = sheet.getRange(1,1,hours,1);
+            var events_insert	= arrayIntegers(hours).map(function(x,i){return [""];});
+            var range	= sheet.getRange(1,1,hours,1);
             
             Logger.log( events.length );
 
@@ -57,7 +58,7 @@ var CalendarSpread = (function()
               insertEventByStartTime( events[i] );
             
             range.setValues( events_insert );
-        }
+        };
 
         /**
         */
